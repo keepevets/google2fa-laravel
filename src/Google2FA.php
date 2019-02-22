@@ -164,7 +164,12 @@ class Google2FA extends Google2FAService
      */
     protected function isEnabled()
     {
-        return $this->config('enabled');
+        //check if mfa is only enabled for specific users
+        if (is_null($this->config('user_enabled_col'))){
+            return $this->config('enabled');
+        } else {
+            return $this->config('enabled') && $this->getUser()->{$this->config('user_enabled_col')};
+        }
     }
 
     /**

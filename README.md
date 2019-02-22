@@ -121,6 +121,17 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware(['auth', '2fa']);
 ```
+### Configure the auth and enabling column
+
+You can specify to use an Auth::guard() other than the default by adding/editing the value of 'user_guard' in the config, null will use default guard
+``` php
+'user_guard' => null,
+```
+
+And to enable 2FA for only specific columns, add a boolean to the user table you're authenticating against and specify the name of the column in config as user_enabled_col', null enables for all users
+``` php
+'user_enabled_col' => null,
+```
 
 ### Configuring the view
 

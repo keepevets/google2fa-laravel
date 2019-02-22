@@ -22,7 +22,12 @@ trait Auth
             $this->auth = app($this->config('auth'));
         }
 
-        return $this->auth;
+        //check config if guard is specified
+        if (is_null($this->config('user_guard'))){
+            return $this->auth;
+        } else {
+            return $this->auth->guard($this->config('user_guard'));
+        }
     }
 
     /**

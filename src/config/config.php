@@ -54,6 +54,18 @@ return [
     'otp_secret_column' => 'google2fa_secret',
 
     /*
+    * Enable only if this column on user is true, null defaults to always enable
+    */
+    'user_enabled_col' => null,
+
+
+    /*
+    * Specify the Laravel auth guard used, null defaults to default guard
+    */
+
+    'user_guard' => null,
+
+    /*
      * One Time Password View
      */
     'view' => 'google2fa.index',
