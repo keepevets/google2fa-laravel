@@ -128,7 +128,7 @@ You can specify to use an Auth::guard() other than the default by adding/editing
 'user_guard' => null,
 ```
 
-And to enable 2FA for only specific columns, add a boolean to the user table you're authenticating against and specify the name of the column in config as user_enabled_col', null enables for all users
+And to enable 2FA for only specific users where a column is true, add a boolean to the users table you're authenticating against and specify the name of the column in config as user_enabled_col', null enables for all users
 ``` php
 'user_enabled_col' => null,
 ```
