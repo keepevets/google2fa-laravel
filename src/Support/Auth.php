@@ -20,14 +20,13 @@ trait Auth
     {
         if (is_null($this->auth)) {
             $this->auth = app($this->config('auth'));
+
+            if (!empty($this->config('guard'))) {
+                $this->auth = app($this->config('auth'))->guard($this->config('guard'));
+            }
         }
 
-        //check config if guard is specified
-        if (is_null($this->config('user_guard'))){
-            return $this->auth;
-        } else {
-            return $this->auth->guard($this->config('user_guard'));
-        }
+        return $this->auth;
     }
 
     /**
@@ -40,5 +39,5 @@ trait Auth
         return $this->getAuth()->user();
     }
 
-    abstract public function config($string, $children = []);
+    abstract protected function config($string, $children = []);
 }
